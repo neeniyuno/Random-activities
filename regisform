@@ -1,0 +1,56 @@
+package com.example.registrationforminf211;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+//import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+//import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+
+
+    public void getInput (View v)
+    {
+        EditText firstName = findViewById(R.id.firstName);
+        String input = firstName.getText().toString();
+        Log.d("pasok", input );
+
+        EditText lastName = findViewById(R.id.lastName);
+        String input1 = lastName.getText().toString();
+        Log.d("pasok", input1 );
+
+        EditText email = findViewById(R.id.email);
+        String input2 = email.getText().toString();
+        Log.d("pasok", input2 );
+
+        EditText age = findViewById(R.id.age);
+        int inpt = Integer.parseInt(age.getText().toString());
+        Log.d("pasok", String.valueOf(inpt));
+
+        TextView txtView = findViewById(R.id.txtView);
+        txtView.setText("First Name: " + input);
+
+        TextView txtView1 = findViewById(R.id.txtView1);
+        txtView1.setText("Last Name: " + input1);
+
+        TextView txtView2 = findViewById(R.id.txtView2);
+        txtView2.setText("Email: " + input2);
+
+        TextView txtView3 = findViewById(R.id.txtView3);
+        txtView3.setText("Age: " + inpt + "years old");
+
+    }
+
+}
