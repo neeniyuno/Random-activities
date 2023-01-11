@@ -1,0 +1,75 @@
+package com.example.calculator;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+    }
+
+    public void Add (View v)
+    {
+            EditText firstNum = findViewById(R.id.firstNum);
+            int num1 = Integer.valueOf(firstNum.getText().toString());
+            EditText secNum = findViewById(R.id.secNum);
+            int num2 = Integer.valueOf(secNum.getText().toString());
+            String ans = String.valueOf(num1 + num2);
+
+
+            TextView output = findViewById(R.id.output);
+            output.setText(num1 + " + " + num2 + " = " + ans);
+            Log.d( "solve: ", num1 + " + " + num2 + " = " + ans);
+    }
+
+    public void Subtract (View v)
+    {
+            EditText firstNum = findViewById(R.id.firstNum);
+            int num1 = Integer.valueOf(firstNum.getText().toString());
+            EditText secNum = findViewById(R.id.secNum);
+            int num2 = Integer.valueOf(secNum.getText().toString());
+            String ans = String.valueOf(num1 - num2);
+
+
+            TextView output = findViewById(R.id.output);
+            output.setText(num1 + " - " + num2 + " = " + ans);
+            Log.d( "solve: ", num1 + " - " + num2 + " = " + ans);
+    }
+
+    public void Multiply (View v)
+    {
+            EditText firstNum = findViewById(R.id.firstNum);
+            int num1 = Integer.valueOf(firstNum.getText().toString());
+            EditText secNum = findViewById(R.id.secNum);
+            int num2 = Integer.valueOf(secNum.getText().toString());
+            String ans = String.valueOf(num1 * num2);
+
+
+            TextView output = findViewById(R.id.output);
+            output.setText(num1 + " * " + num2 + " = " + ans);
+            Log.d( "solve: ", num1 + " * " + num2 + " = " + ans);
+    }
+
+    public void Divide (View v)
+    {
+            EditText firstNum = findViewById(R.id.firstNum);
+            int num1 = Integer.valueOf(firstNum.getText().toString());
+            EditText secNum = findViewById(R.id.secNum);
+            int num2 = Integer.valueOf(secNum.getText().toString());
+            String ans = String.valueOf(num1 / num2);
+
+
+            TextView output = findViewById(R.id.output);
+            output.setText(num1 + " / " + num2 + " = " + ans);
+            Log.d( "solve: ", num1 + " / " + num2 + " = " + ans);
+    }
+
+}
