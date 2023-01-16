@@ -13,3 +13,45 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }
+    
+    public void compAve (View v)
+    {
+        EditText txt1 = findViewById(R.id.txt1);
+        EditText txt2 = findViewById(R.id.txt2);
+        EditText txt3 = findViewById(R.id.txt3);
+        
+        TextView output = findViewById(R.id.output);
+        
+        int q1 = new Integer(txt1.getText().toString());
+        int q2 = Integer.valueOf(txt2.getText().toString());
+        int q3 = Integer.parseInt(txt3.getText().toString());
+        
+        int ave = (q1 + q2 + q3) / 3;
+        
+        String ipnOutput = "";
+        Log.d("average:" ,  String.valueOf(ave));
+        
+        //output.setText(String.valueOf(ave)):
+        ipnOutput += "Average: " + String.valueOf(ave));
+        
+        if (ave >= 85)
+        {
+            ipnOutput += "\nStatus: PASSED\nRemarks: ADVANCED";
+        }
+        else if (ave >= 60 && ave <= 84)
+        {
+            ipnOutput += "\nStatus: PASSED\nRemarks: AVERAGE";
+        }
+        else if (ave >= 50 && ave <= 59)
+        {
+            ipnOutput += "\nStatus: FAILED\nRemarks: FAIR";
+        }
+        else
+        {  
+            ipnOutput += "\nStatus: FAILED\nRemarks: POOR";
+        }
+        
+        
+        output.setText(ipnOutput);
+    }
+}
