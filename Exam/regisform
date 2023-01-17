@@ -1,0 +1,48 @@
+package com.example.exam;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class RegisForm extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_regis_form);
+    }
+
+    public void getInput (View v)
+    {
+        EditText firstName = findViewById(R.id.firstName);
+        String input = firstName.getText().toString();
+
+        TextView txtView = findViewById(R.id.txtView);
+        txtView.setText("First Name: " + input);
+
+
+        EditText lastName = findViewById(R.id.lastName);
+        String input1 = lastName.getText().toString();
+
+        TextView txtView1 = findViewById(R.id.txtView1);
+        txtView1.setText("Last Name: " + input1);
+
+        EditText email = findViewById(R.id.lastName);
+        String input2 = email.getText().toString();
+
+        TextView txtView2 = findViewById(R.id.txtView2);
+        txtView2.setText("Email: " + input2);
+
+        EditText age = findViewById(R.id.age);
+        int inpt = Integer.parseInt(age.getText().toString());
+
+
+        TextView txtView3 = findViewById(R.id.txtView3);
+        txtView3.setText("Age: " + inpt + " years old");
+
+    }
+
+}
