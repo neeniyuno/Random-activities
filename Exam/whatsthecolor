@@ -1,0 +1,66 @@
+package com.example.exam;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+public class WhatsTheColor extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_whats_the_color);
+    }
+
+    public void tryFunction(View v){
+        v.setEnabled(false);
+        Button a = (Button) v;
+        a.setText("red");
+        a.setBackgroundColor(getResources().getColor(R.color.dugo));
+
+    }
+
+    public void tryFunction1(View v){
+        v.setEnabled(false);
+        Button b = (Button) v;
+        b.setText("yellow");
+        b.setBackgroundColor(getResources().getColor(R.color.dilaw));
+
+    }
+
+    public void tryFunction2(View v){
+        v.setEnabled(false);
+        Button b = (Button) v;
+        b.setText("green");
+        b.setBackgroundColor(getResources().getColor(R.color.berde));
+
+    }
+
+
+    public void tryFunction4(View v){
+        v.setEnabled(false);
+        Button b = (Button) v;
+        b.setText("purple");
+        b.setBackgroundColor(getResources().getColor(R.color.purple_200));
+
+    }
+
+    public void tryFunction5(View v){
+        v.setEnabled(false);
+        Button b = (Button) v;
+        b.setText("blue");
+        b.setBackgroundColor(getResources().getColor(R.color.asul));
+
+    }
+
+    public void tryFunction6(View v){
+        v.setEnabled(false);
+        Button b = (Button) v;
+        b.setText("orange");
+        b.setBackgroundColor(getResources().getColor(R.color.kahel));
+
+    }
+
+}
