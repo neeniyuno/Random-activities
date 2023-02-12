@@ -1,0 +1,34 @@
+package com.example.datainnotification;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class ViewConfession extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_confession);
+        setTitle("View Confession");
+
+        TextView sName = findViewById(R.id.sName);
+        Intent a = getIntent();
+        String sNames = a.getStringExtra("name");
+        sName.setText(sNames);
+
+        TextView cName = findViewById(R.id.cName);
+        Intent b = getIntent();
+        String cNames = b.getStringExtra("course");
+        cName.setText(cNames);
+
+        TextView mName = findViewById(R.id.mName);
+        Intent c = getIntent();
+        String mNames = c.getStringExtra("message");
+        mName.setText(mNames);
+
+
+    }
+}
