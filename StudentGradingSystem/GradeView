@@ -1,0 +1,56 @@
+package com.example.studentgradingsystem;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class GradeView extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_grade_view);
+
+        TextView fOutput = findViewById(R.id.fOutput);
+        Intent a = getIntent();
+        String fn = a.getStringExtra("fn");
+        fOutput.setText("First name: " + fn);
+
+        TextView lOutput = findViewById(R.id.lOutput);
+        Intent b = getIntent();
+        String ln = b.getStringExtra("ln");
+        lOutput.setText("Last name: " + ln);
+        setTitle(ln + "'s Grade");
+
+        TextView aOutput = findViewById(R.id.aOutput);
+        Intent c = getIntent();
+        String output = "";
+        int an = new Integer(c.getStringExtra("an"));
+        output += (an * .2);
+        aOutput.setText("Attendance: " + output + "%");
+
+        TextView eOutput = findViewById(R.id.eOutput);
+        Intent d = getIntent();
+        String output1 = "";
+        int en = new Integer(d.getStringExtra("en"));
+        output1 += (en * .5);
+        eOutput.setText("Exam: " + output1 + "%");
+
+        TextView qOutput = findViewById(R.id.qOutput);
+        Intent e = getIntent();
+        String output2 = "";
+        int q1n = new Integer(e.getStringExtra("q1n"));
+        int q2n = new Integer(e.getStringExtra("q2n"));
+        int q3n = new Integer(e.getStringExtra("q3n"));
+        int q4n = new Integer(e.getStringExtra("q4n"));
+        output2 += (q1n + q2n + q3n + q4n)/4 * .3;
+        qOutput.setText("Quizzes: " + output2 + "%");
+
+        TextView tOutput = findViewById(R.id.tOutput);
+        String output3 = "";
+        output3 += (an * .2) + (q1n + q2n + q3n + q4n)/4 * .3 +  (en * .5) ;
+        tOutput.setText("Total: " + output3 );
+    }
+}
