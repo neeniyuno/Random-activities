@@ -1,0 +1,55 @@
+package com.example.radiocheck;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.RadioGroup;
+
+public class MainActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        Button button = findViewById(R.id.button);
+        RadioGroup rdGrp1 = findViewById(R.id.rdGrp1);
+        rdGrp1.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch(checkedId)
+                {
+                    case R.id.rdRed:
+                        button.setBackgroundColor(getResources().getColor(R.color.dugo));
+                        break;
+                    case R.id.rdGreen:
+                        button.setBackgroundColor(getResources().getColor(R.color.dahon));
+                        break;
+                    case R.id.rdBlue:
+                        button.setBackgroundColor(getResources().getColor(R.color.ulap));
+                        break;
+
+                }
+
+            }
+        });
+    }
+
+    public void buttonEnable(View v) {
+        CheckBox chkEn = findViewById(R.id.chkEn);
+        Button button = findViewById(R.id.button);
+        boolean isCheck = chkEn.isChecked();
+        button.setText(String.valueOf(isCheck));
+
+        if (isCheck) {
+            button.setEnabled(true);
+        }
+        else
+        {
+            button.setEnabled(false);
+        }
+    }
+}
