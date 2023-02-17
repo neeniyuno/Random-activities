@@ -1,0 +1,170 @@
+package com.example.healthscreening;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
+import android.widget.EditText;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+    public static final String extra_has_yes= "EXTRA_HAS_YES";
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setTitle("COVID-19 Health Screening Questionnaire");
+
+
+        Button sbutton = findViewById(R.id.sbutton);
+        CheckBox cB1 = findViewById(R.id.cB1);
+        CheckBox cB2 = findViewById(R.id.cB2);
+        sbutton.setEnabled(false);
+
+        cB1.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            {
+                if (cB1.isChecked()) {
+                    sbutton.setEnabled(false);
+                } else {
+                    Toast.makeText(MainActivity.this, "Please certify the content!!", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+
+        cB2.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener()
+        {
+            @Override
+            public void onCheckedChanged(CompoundButton compoundButton, boolean b)
+            {
+                sbutton.setEnabled(b);
+            }
+        });
+    }
+
+    public void screening(View v)
+    {
+        EditText name = findViewById(R.id.name);
+        String input = name.getText().toString();
+
+        RadioGroup rdGrp1 = findViewById(R.id.rdGrp1);
+        RadioGroup rdGrp2 = findViewById(R.id.rdGrp2);
+        RadioGroup rdGrp3 = findViewById(R.id.rdGrp3);
+        RadioGroup rdGrp4 = findViewById(R.id.rdGrp4);
+        RadioGroup rdGrp5 = findViewById(R.id.rdGrp5);
+        RadioGroup rdGrp6 = findViewById(R.id.rdGrp6);
+        RadioGroup rdGrp7 = findViewById(R.id.rdGrp7);
+        RadioGroup rdGrp8 = findViewById(R.id.rdGrp8);
+
+        Button sbutton = findViewById(R.id.sbutton);
+        //sbutton.setEnabled(false);
+        CheckBox cB1 = findViewById(R.id.cB1);
+        CheckBox cB2 = findViewById(R.id.cB2);
+
+        if (rdGrp1.getCheckedRadioButtonId() == -1 || rdGrp2.getCheckedRadioButtonId() == -1 || rdGrp3.getCheckedRadioButtonId() == -1 ||
+                rdGrp4.getCheckedRadioButtonId() == -1 || rdGrp5.getCheckedRadioButtonId() == -1 || rdGrp6.getCheckedRadioButtonId() == -1 ||
+                rdGrp7.getCheckedRadioButtonId() == -1 || rdGrp8.getCheckedRadioButtonId() == -1 ||
+                !cB1.isChecked() || !cB2.isChecked())
+        {
+            //sbutton.setEnabled(false);
+            Toast.makeText(MainActivity.this, "Please fill-in all the necessary information!!", Toast.LENGTH_LONG).show();
+            return;
+        }
+        else
+        {
+            //sbutton.setEnabled(false);
+        }
+
+
+        boolean sCB = false;
+        String sOpt1 = "";
+        String sOpt2 = "";
+        String sOpt3 = "";
+        String sOpt4 = "";
+        String sOpt5 = "";
+        String sOpt6 = "";
+        String sOpt7 = "";
+        String sOpt8 = "";
+
+        if (rdGrp1.getCheckedRadioButtonId() == R.id.rdby1)
+        {
+            sCB = true;
+            sOpt1 = "• Fever";
+        }
+        if (rdGrp2.getCheckedRadioButtonId() == R.id.rdby2)
+        {
+            sCB = true;
+            sOpt2 = "• Cough";
+        }
+        if (rdGrp3.getCheckedRadioButtonId() == R.id.rdby3)
+        {
+            sCB = true;
+            sOpt3 = "• Shortness of breath or difficulty breathing";
+        }
+        if (rdGrp4.getCheckedRadioButtonId() == R.id.rdby4)
+        {
+            sCB = true;
+            sOpt4 = "• Sore throat";
+        }
+        if (rdGrp5.getCheckedRadioButtonId() == R.id.rdby5)
+        {
+            sCB = true;
+            sOpt5 = "• New loss of taste or smell";
+        }
+        if (rdGrp6.getCheckedRadioButtonId() == R.id.rdby6)
+        {
+            sCB = true;
+            sOpt6 = "• Chills";
+        }
+        if (rdGrp7.getCheckedRadioButtonId() == R.id.rdby7)
+        {
+            sCB = true;
+            sOpt7 = "• Head or Muscle Aches";
+        }
+        if (rdGrp8.getCheckedRadioButtonId() == R.id.rdby8)
+        {
+            sCB = true;
+            sOpt8 = "• Nausea, diarrhea, vomiting";
+        }
+
+
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this);
+        builder.setContentTitle("New notification");
+        builder.setContentText("Hello, " + input + " check your status.");
+        builder.setSmallIcon(R.drawable.baseline_message_24);
+        builder.setAutoCancel(true);
+
+        Intent i = new Intent(this, ViewResults.class);
+
+        i.putExtra(extra_has_yes, sCB);
+        i.putExtra("name", input);
+        i.putExtra("checked", sCB);
+        i.putExtra("opt1", sOpt1);
+        i.putExtra("opt2", sOpt2);
+        i.putExtra("opt3", sOpt3);
+        i.putExtra("opt4", sOpt4);
+        i.putExtra("opt5", sOpt5);
+        i.putExtra("opt6", sOpt6);
+        i.putExtra("opt7", sOpt7);
+        i.putExtra("opt8", sOpt8);
+
+        PendingIntent pen = PendingIntent.getActivity(this, 0, i, PendingIntent.FLAG_UPDATE_CURRENT);
+        builder.setContentIntent(pen);
+
+        NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+        nm.notify(0, builder.build());
+
+    }
+}
