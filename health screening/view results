@@ -1,0 +1,40 @@
+package com.example.healthscreening;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.widget.TextView;
+
+public class ViewResults extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_view_results);
+
+        TextView nView = findViewById(R.id.nView);
+        TextView result = findViewById(R.id.result);
+
+        Intent i = getIntent();
+        String name = i.getStringExtra("name");
+        boolean yes = getIntent().getBooleanExtra(MainActivity.extra_has_yes, false);
+        if (yes) {
+            String op1 = i.getStringExtra("opt1");
+            String op2 = i.getStringExtra("opt2");
+            String op3 = i.getStringExtra("opt3");
+            String op4 = i.getStringExtra("opt4");
+            String op5 = i.getStringExtra("opt5");
+            String op6 = i.getStringExtra("opt6");
+            String op7 = i.getStringExtra("opt7");
+            String op8 = i.getStringExtra("opt8");
+            nView.setText("Hello " + name + ", " + "you are not allowed to enter the premise due to your following symptoms: ");
+            result.setText(op1 + "\n" + op2 + "\n" + op3 + "\n" + op4 + "\n" + op5 + "\n" + op6 +
+                    "\n" + op7 + "\n" + op8);
+        }else{
+            result.setText("Hello " + name + ", Thank you for your cooperation!" + "\n" + "You may enter the premise.");
+        }
+
+
+    }
+}
