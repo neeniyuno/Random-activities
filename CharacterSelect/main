@@ -1,0 +1,217 @@
+package com.example.characterselection;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    ImageView img;
+    int image;
+    String selectChar;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        setTitle("Character Selection");
+
+
+        Spinner spin = findViewById(R.id.spinner);
+        ArrayAdapter<CharSequence> adapt = ArrayAdapter.createFromResource(this, R.array.characters, android.R.layout.simple_spinner_item);
+        adapt.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spin.setAdapter(adapt);
+
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+
+                if (i == 1)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.greek);
+                    selectChar="Greek";
+                    image = R.drawable.greek;
+                }
+                else if (i == 2)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.nepalese);
+                    selectChar="Nepalese";
+                    image = R.drawable.nepalese;
+                }
+
+                else if (i == 3)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.cambodian);
+                    selectChar="Cambodian";
+                    image = R.drawable.cambodian;
+                }
+                else if (i == 4)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.indian);
+                    selectChar="Indian";
+                    image = R.drawable.indian;
+
+                }
+                else if (i == 5)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.mexican);
+                    selectChar="Mexican";
+                    image = R.drawable.mexican;
+                }
+                else if (i == 6)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.singaporean);
+                    selectChar="Singaporean";
+                    image = R.drawable.singaporean;
+                }
+                else if (i == 7)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.srilanka);
+                    selectChar="Sri-lanka";
+                    image = R.drawable.srilanka;
+                }
+                else if (i == 8)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.tibetan);
+                    selectChar="Tibetan";
+                    image = R.drawable.tibetan;
+                }
+                else if (i == 9)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.mongolian);
+                    selectChar="Mongolian";
+                    image = R.drawable.mongolian;
+                }
+                else if (i == 10)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.chinese);
+                    selectChar="Chinese";
+                    image = R.drawable.chinese;
+                }
+                else if (i == 11)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.arabian);
+                    selectChar="Arabian";
+                    image = R.drawable.arabian;
+                }
+                else if (i == 12)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.filipino);
+                    selectChar="Filipino";
+                    image = R.drawable.filipino;
+                }
+                else if (i == 13)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.pakistani);
+                    selectChar="Pakistani";
+                    image = R.drawable.pakistani;
+                }
+                else if (i == 14)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.malaysian);
+                    selectChar="Malaysian";
+                    image = R.drawable.malaysian;
+                }
+                else if (i == 15)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(MainActivity.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.thailand);
+                    selectChar="Thailand";
+                    image = R.drawable.thailand;
+                }
+                else if (i == 0)
+                {
+                    Toast.makeText(MainActivity.this, "Please choose one..", Toast.LENGTH_LONG).show();
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+
+
+    }
+    public void select (View v)
+    {
+        EditText name = findViewById(R.id.name);
+        String input = name.getText().toString();
+
+        Intent i = new Intent(this, GameStart.class);
+        i.putExtra("name", input);
+        i.putExtra("character", selectChar);
+        i.putExtra("image", image);
+        startActivity(i);
+    }
+
+
+}
