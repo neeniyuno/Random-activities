@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">CharacterSelection</string>
+    <string-array name="characters">
+        <item>Character Selection</item>
+        <item>Greek</item>
+        <item>Nepalese</item>
+        <item>Cambodian</item>
+        <item>Indian</item>
+        <item>Mexican</item>
+        <item>Singaporean</item>
+        <item>Srilanka</item>
+        <item>Tibetan</item>
+        <item>Mongolian</item>
+        <item>Chinese</item>
+        <item>Arabian</item>
+        <item>Filipino</item>
+        <item>Pakistani</item>
+        <item>Malaysian</item>
+        <item>Thailand</item>
+    </string-array>
+</resources>
