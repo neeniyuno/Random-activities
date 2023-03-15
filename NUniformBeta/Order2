@@ -40,9 +40,7 @@ public class Order2 extends AppCompatActivity {
 
                     img = findViewById(R.id.img);
                     img.setImageResource(R.drawable.nuni5);
-                    selectUniform = "Traditional Uniform";
-
-
+                    selectUniform = " Female Traditional Uniform";
                 }
                 else if (i == 2)
                 {
@@ -50,8 +48,8 @@ public class Order2 extends AppCompatActivity {
                     Toast.makeText(Order2.this, select, Toast.LENGTH_LONG).show();
 
                     img = findViewById(R.id.img);
-                    img.setImageResource(R.drawable.nuni2);
-                    selectUniform = "Tourism Uniform";
+                    img.setImageResource(R.drawable.nuni5);
+                    selectUniform = "Male Traditional Uniform";
                 }
                 else if (i == 3)
                 {
@@ -59,9 +57,38 @@ public class Order2 extends AppCompatActivity {
                     Toast.makeText(Order2.this, select, Toast.LENGTH_LONG).show();
 
                     img = findViewById(R.id.img);
-                    img.setImageResource(R.drawable.nuni1);
-                    selectUniform = "Med Uniform";
+                    img.setImageResource(R.drawable.nuni2);
+                    selectUniform = "Female Tourism Uniform";
                 }
+                else if (i == 4)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(Order2.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.nuni2);
+                    selectUniform = "Male Tourism Uniform";
+                }
+                else if (i == 5)
+                {
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(Order2.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.nuni1);
+                    selectUniform = "Female Med Uniform";
+                }
+                else if (i == 6)
+                {
+
+                    String select = adapterView.getItemAtPosition(i).toString();
+                    Toast.makeText(Order2.this, select, Toast.LENGTH_LONG).show();
+
+                    img = findViewById(R.id.img);
+                    img.setImageResource(R.drawable.nuni1);
+                    selectUniform = "Male Med Uniform";
+                }
+
 
                 else {
 
