@@ -2,11 +2,14 @@ package com.example.nuniformbeta;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
@@ -16,6 +19,8 @@ public class Order2 extends AppCompatActivity {
 
     ImageView img;
     String selectUniform;
+    Button addToCartButton;
+    public static String student_id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,14 +93,13 @@ public class Order2 extends AppCompatActivity {
                     img.setImageResource(R.drawable.nuni1);
                     selectUniform = "Male Med Uniform";
                 }
-
-
                 else {
 
                     Toast.makeText(Order2.this, "Please choose one..", Toast.LENGTH_SHORT).show();
 
                     img = findViewById(R.id.img);
                     img.setImageResource(R.drawable.nuimg15);
+                    selectUniform = "";
                 }
             }
 
@@ -110,11 +114,54 @@ public class Order2 extends AppCompatActivity {
     {
         EditText quanti = findViewById(R.id.quanti);
         String input = quanti.getText().toString();
+        addToCartButton = findViewById(R.id.addtoCart);
+        
 
-        Intent i = new Intent(this, ViewCart.class);
-        i.putExtra("quanti", input);
-        i.putExtra("uniform", selectUniform);
-        startActivity(i);
+        // get a new instance of the database
+        SQLiteDatabase db = new MyDBHelper(this).getWritableDatabase();
+
+        // create a new ContentValues object to store the data to be inserted
+        ContentValues values = new ContentValues();
+
+        //validation for not completing the form
+        if (selectUniform.equals("") || input.equals(""))
+        {
+            Toast.makeText(this, "Error invalid input, please Input Quantity and Uniform!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+
+        // insert the data into the database
+        long newRowId = 0;
+        if(ViewCart.id == 0) {
+            values.put("student_id", student_id);
+            values.put("uniform_type", selectUniform);
+            values.put("uniform_quantity", input);
+            newRowId = db.insert("orders", null, values);
+        }
+        else {
+            values.put("uniform_type", selectUniform);
+            values.put("uniform_quantity", input);
+            // get a new instance of the database
+            db.update("orders", values, "order_id = ?", new String[]{String.valueOf(ViewCart.id)});
+            newRowId = ViewCart.id;
+        }
+
+
+        // check if the data was inserted successfully
+        if (newRowId == -1  )
+        {
+            Toast.makeText(this, "Error inserting data into the database", Toast.LENGTH_SHORT).show();
+        } 
+        else 
+        {
+            Toast.makeText(this, "Data inserted into the database", Toast.LENGTH_SHORT).show();
+
+            ViewCart.id = newRowId;
+            Intent i = new Intent(this, ViewCart.class);
+            i.putExtra("quanti", input);
+            i.putExtra("uniform", selectUniform);
+            startActivity(i);
+        }
     }
-
 }
