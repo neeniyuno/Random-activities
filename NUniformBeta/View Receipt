@@ -22,7 +22,6 @@ public class ViewReceipt extends AppCompatActivity {
         String uniform = a.getStringExtra("unif");
         TextView txtOutput2 = findViewById(R.id.txtOutput2);
         txtOutput2.setText(quanti + " " + uniform);
-
-
+        
     }
 }
